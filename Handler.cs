@@ -2,6 +2,7 @@ using Amazon.Lambda.Core;
 using System.Collections;
 using Amazon.Lambda.APIGatewayEvents;
 using System.Text.Json;
+using System.Collections.Generic;
 // this does not appear to contain the JsonSerializer - it is in System.Text.Json above
 using System.Text.Json.Serialization;
 
@@ -29,6 +30,11 @@ namespace AwsDotnetCsharp
           
           return new APIGatewayProxyResponse(){
             Body = JsonSerializer.Serialize(tasks), 
+            Headers = new Dictionary<string, string>
+              { 
+                { "Content-Type", "application/json" }, 
+                { "Access-Control-Allow-Origin", "*" } 
+              },
             StatusCode = 200
           };
        }
