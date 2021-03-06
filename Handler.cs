@@ -1,14 +1,19 @@
 using Amazon.Lambda.Core;
+using System.Collections;
 
 [assembly:LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 namespace AwsDotnetCsharp
 {
     public class Handler
     {
-       public Task Hello(Request request)
+       public ArrayList Hello(Request request)
        {
+          ArrayList tasks = new ArrayList();
           Task t1 = new Task("abc1234", "Buy milk", false);
-           return t1;
+          Task t2 = new Task("abc4567", "Get Newspaper", false);
+          tasks.Add(t1);
+          tasks.Add(t2);
+          return tasks;
        }
     }
 
