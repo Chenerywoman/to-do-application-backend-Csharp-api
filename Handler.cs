@@ -1,13 +1,16 @@
 using Amazon.Lambda.Core;
 using System.Collections;
 using Amazon.Lambda.APIGatewayEvents;
+using System.Text.Json;
+// this does not appear to contain the JsonSerializer - it is in System.Text.Json above
+using System.Text.Json.Serialization;
 
 [assembly:LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 namespace AwsDotnetCsharp
 {
     public class Handler
     {
-       public ArrayList GetTasks(APIGatewayProxyRequest request)
+       public APIGatewayProxyResponse GetTasks(APIGatewayProxyRequest request)
        {  
          // PathParameters is a library - so access via key: https://github.com/aws/aws-lambda-dotnet/tree/master/Libraries/src/Amazon.Lambda.APIGatewayEvents
           string userId = request.PathParameters["userId"];
@@ -24,7 +27,10 @@ namespace AwsDotnetCsharp
             tasks.Add(t2);
           }
           
-          return tasks;
+          return new APIGatewayProxyResponse(){
+            Body = JsonSerializer.Serialize(tasks), 
+            StatusCode = 200
+          };
        }
     }
 
