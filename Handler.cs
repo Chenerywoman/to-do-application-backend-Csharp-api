@@ -5,20 +5,23 @@ namespace AwsDotnetCsharp
 {
     public class Handler
     {
-       public Response Hello(Request request)
+       public Task Hello(Request request)
        {
-           return new Response("Hello World!", request);
+          Task t1 = new Task("abc1234", "Buy milk", false);
+           return t1;
        }
     }
 
-    public class Response
+    public class Task
     {
-      public string Message {get; set;}
-      public Request Request {get; set;}
+      public string TaskId {get;}
+      public string Description {get;}
+      public bool Completed {get;}
 
-      public Response(string message, Request request){
-        Message = message;
-        Request = request;
+      public Task(string taskId, string description, bool completed){
+        TaskId = taskId;
+        Description = description;
+        Completed = completed;
       }
     }
 
