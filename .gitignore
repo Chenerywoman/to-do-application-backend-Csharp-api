@@ -1,0 +1,8 @@
+# can add bin directory to .gitignore as it is created by running ./build.sh
+bin/
+
+# can add .serverless direction to .gitignore as it is created by running serverless deploy
+.serverless/
+
+# can add obj directory to .gitignore as it is created by running ./build.sh
+obj/
