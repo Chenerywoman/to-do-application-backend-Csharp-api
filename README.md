@@ -1,2 +1,3 @@
 # to-do-application-backend-Csharp-api
-A backend respository to server the frontend to-do-application.  It is written with C# and uses the serverless framework to deploy the code to AWSLambda.
+A backend respository created on the TechReturners Your Return to Tech course.  The repository can serve the frontend to-do-application.  
+It is written with C# and uses the serverless framework to deploy the code to AWSLambda.
