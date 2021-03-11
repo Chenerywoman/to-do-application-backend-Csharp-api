@@ -6,3 +6,7 @@ bin/
 
 # can add obj directory to .gitignore as it is created by running ./build.sh
 obj/
+
+# environment variables should not be shared on github
+config.dev.json
+config.prod.json
